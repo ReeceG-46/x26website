@@ -1,0 +1,110 @@
+:root {
+  --bg-deep: #07111f;
+  --bg-mid: #0a1628;
+  --bg-glow: #142a4a;
+  --ink: #ece6d7;
+  --ink-dim: #b8b2a3;
+  --accent: #6a9bee;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg-mid);
+  color: var(--ink);
+  font-family: "EB Garamond", "Cormorant Garamond", Garamond, "Times New Roman", serif;
+  font-feature-settings: "liga", "kern";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.page {
+  position: relative;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.5rem, 5vw, 4rem);
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 10%, rgba(106, 155, 238, 0.18), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 80% 90%, rgba(20, 42, 74, 0.85), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 10% 80%, rgba(20, 42, 74, 0.6), transparent 70%),
+    linear-gradient(180deg, #07111f 0%, #0a1628 45%, #0b1d36 100%);
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 12% 22%, rgba(236, 230, 215, 0.55), transparent 50%),
+    radial-gradient(1px 1px at 78% 14%, rgba(236, 230, 215, 0.4), transparent 50%),
+    radial-gradient(1px 1px at 42% 78%, rgba(236, 230, 215, 0.5), transparent 50%),
+    radial-gradient(1px 1px at 88% 62%, rgba(236, 230, 215, 0.35), transparent 50%),
+    radial-gradient(1.5px 1.5px at 28% 48%, rgba(236, 230, 215, 0.45), transparent 50%),
+    radial-gradient(1px 1px at 64% 32%, rgba(236, 230, 215, 0.3), transparent 50%),
+    radial-gradient(1px 1px at 8% 88%, rgba(236, 230, 215, 0.3), transparent 50%),
+    radial-gradient(1.5px 1.5px at 92% 38%, rgba(236, 230, 215, 0.4), transparent 50%);
+  opacity: 0.7;
+  animation: drift 60s linear infinite alternate;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-1.5%, -1%, 0);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: min(64rem, 100%);
+  text-align: left;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6.4vw, 5.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h1 em {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.soon {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg::after {
+    animation: none;
+  }
+}
